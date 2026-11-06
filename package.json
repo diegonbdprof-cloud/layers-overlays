@@ -1,0 +1,16 @@
+{
+  "name": "atelie-camadas",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Demonstração educacional local de camadas, layouts e sobreposições.",
+  "scripts": {
+    "test": "node tests/overlays.test.mjs"
+  },
+  "devDependencies": {
+    "axe-core": "^4.10.3",
+    "playwright": "^1.56.1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

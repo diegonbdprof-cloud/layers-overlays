@@ -1,0 +1,111 @@
+{
+  "ranAt": "2026-11-06T21:03:07.581Z",
+  "chrome": "156.0.8078.47",
+  "axeCore": "4.14.0",
+  "page": "file:///workspace/index.html",
+  "passed": 14,
+  "failed": 0,
+  "externalRequests": [],
+  "results": [
+    {
+      "name": "página em português abre sem pedido externo",
+      "ok": true,
+      "ms": 200
+    },
+    {
+      "name": "botões têm nome acessível, foco, hover e desativado distintos",
+      "ok": true,
+      "ms": 224
+    },
+    {
+      "name": "diálogo: abrir, validar, Escape, pano de fundo, fechar e foco",
+      "ok": true,
+      "ms": 3043
+    },
+    {
+      "name": "diálogo válido gera nota e notificação sem roubar foco nem gravar",
+      "ok": true,
+      "ms": 3479
+    },
+    {
+      "name": "notificações não modais conservam o foco e só fecham pelo controle",
+      "ok": true,
+      "ms": 2951
+    },
+    {
+      "name": "gaveta: cartão, Escape, pano de fundo, botão e nota de exemplo",
+      "ok": true,
+      "ms": 2302
+    },
+    {
+      "name": "glossário não é modal e não convive com o diálogo",
+      "ok": true,
+      "ms": 322
+    },
+    {
+      "name": "rolagem trava com o modal e volta ao mesmo ponto",
+      "ok": true,
+      "ms": 209
+    },
+    {
+      "name": "diálogo alto rola por dentro e cabe na viewport curta",
+      "ok": true,
+      "ms": 400
+    },
+    {
+      "name": "z-index da página não alcança o diálogo modal",
+      "ok": true,
+      "ms": 415
+    },
+    {
+      "name": "movimento reduzido encurta a transição e ainda fecha",
+      "ok": true,
+      "ms": 254
+    },
+    {
+      "name": "sem overflow horizontal em 320px nos estados principais",
+      "ok": true,
+      "ms": 1267
+    },
+    {
+      "name": "axe-core nos estados desktop e mobile",
+      "ok": true,
+      "ms": 2791
+    },
+    {
+      "name": "capturas de tela dos estados pedidos",
+      "ok": true,
+      "ms": 4768
+    }
+  ],
+  "axe": [
+    {
+      "label": "repouso 1280",
+      "violations": []
+    },
+    {
+      "label": "modal 1280",
+      "violations": []
+    },
+    {
+      "label": "gaveta 1280",
+      "violations": []
+    },
+    {
+      "label": "toast 1280",
+      "violations": []
+    },
+    {
+      "label": "glossário 1280",
+      "violations": []
+    },
+    {
+      "label": "repouso 320",
+      "violations": []
+    },
+    {
+      "label": "modal 320x480",
+      "violations": []
+    }
+  ]
+}

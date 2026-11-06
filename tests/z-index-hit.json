@@ -1,0 +1,8 @@
+{
+  "dialogZ": "auto",
+  "modal": true,
+  "hit": [
+    "session-dialog",
+    "HTML"
+  ]
+}
