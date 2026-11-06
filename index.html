@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ateliê Camadas — laboratório de camadas e sobreposições</title>
+    <meta name="description" content="Painel de estudo local que demonstra camadas de layout, botões, cores de status e sobreposições acessíveis, sem servidor e sem conta.">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='3' y='10' width='16' height='16' fill='%23e4d3bf'/%3E%3Crect x='8' y='6' width='16' height='16' fill='%231a6b66'/%3E%3Crect x='13' y='2' width='16' height='16' fill='%238e2f1c'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <div id="page">
+      <a class="skip" href="#conteudo">Ir para o conteúdo</a>
+
+      <header class="site-header" id="site-header">
+        <div class="brand">
+          <svg class="mark" viewBox="0 0 32 32" aria-hidden="true">
+            <rect x="3" y="10" width="16" height="16" fill="#e4d3bf"></rect>
+            <rect x="8" y="6" width="16" height="16" fill="#1a6b66"></rect>
+            <rect x="13" y="2" width="16" height="16" fill="#8e2f1c"></rect>
+          </svg>
+          <div>
+            <p class="brand-kicker">Laboratório local</p>
+            <p class="brand-name">Ateliê Camadas</p>
+          </div>
+        </div>
+        <p class="header-note">Sem conta, sem envio e sem gravação</p>
+      </header>
+
+      <main id="conteudo" tabindex="-1">
+        <section class="hero">
+          <p class="kicker">Painel de estudo para o portfólio</p>
+          <h1>Camadas, layouts e sobreposições</h1>
+          <p class="lede">
+            Este ateliê reúne, numa mesma mesa, o que o laboratório pede para observar:
+            ordem de pintura, botões com estados visíveis, cores de status com texto e ícone,
+            e três famílias de sobreposição — diálogo modal, gaveta lateral e notificação não modal.
+            Um glossário ancorado entra só quando você pede. Tudo acontece neste navegador.
+          </p>
+        </section>
+
+        <section class="panel" aria-labelledby="mesa-title">
+          <div class="section-heading">
+            <h2 id="mesa-title">Mesa de demonstração</h2>
+            <p>Cada controle abre um tipo diferente de camada. Nada daqui publica o portfólio.</p>
+          </div>
+          <div class="action-grid">
+            <button type="button" class="btn btn-primary" id="open-session" aria-haspopup="dialog" aria-controls="session-dialog">
+              Nova sessão de estudo
+            </button>
+            <button type="button" class="btn btn-secondary" id="open-notes" aria-haspopup="dialog" aria-controls="notes-drawer">
+              Abrir caderno
+            </button>
+            <button type="button" class="btn btn-secondary" id="open-glossary" popovertarget="glossary" aria-expanded="false" aria-controls="glossary">
+              Glossário
+            </button>
+            <button type="button" class="btn btn-secondary" id="show-info">
+              Mostrar informação
+            </button>
+            <button type="button" class="btn btn-secondary" id="show-warning">
+              Mostrar atenção
+            </button>
+            <button type="button" class="btn btn-secondary" id="toggle-proof" aria-pressed="false">
+              Mostrar faixa z-index 9999
+            </button>
+            <button type="button" class="btn" id="publish-disabled" disabled aria-describedby="publish-help">
+              Publicar no portfólio (desativado)
+            </button>
+          </div>
+          <p class="help" id="publish-help">
+            Desativado: esta demonstração não cria conta, não envia dados e não publica nada.
+          </p>
+        </section>
+
+        <section class="panel" aria-labelledby="pecas-title">
+          <div class="section-heading">
+            <h2 id="pecas-title">Peças ligadas ao caderno</h2>
+            <p>Quatro leituras curtas. O botão abre a mesma gaveta e leva o foco até a nota.</p>
+          </div>
+          <div class="card-grid">
+            <article class="card">
+              <p class="card-index">Nota 01</p>
+              <h3>Contexto de empilhamento</h3>
+              <p>O z-index só compara elementos dentro do mesmo contexto. Um filho não atravessa o contexto do pai.</p>
+              <button type="button" class="btn btn-secondary" data-open-note="empilhamento">Ler nota no caderno</button>
+            </article>
+            <article class="card">
+              <p class="card-index">Nota 02</p>
+              <h3>Top layer do diálogo</h3>
+              <p>O diálogo modal entra numa camada do navegador que fica acima de qualquer z-index da página.</p>
+              <button type="button" class="btn btn-secondary" data-open-note="top-layer">Ler nota no caderno</button>
+            </article>
+            <article class="card">
+              <p class="card-index">Nota 03</p>
+              <h3>Pano de fundo e inércia</h3>
+              <p>Enquanto o modal está aberto, o restante do documento não recebe clique nem foco.</p>
+              <button type="button" class="btn btn-secondary" data-open-note="backdrop">Ler nota no caderno</button>
+            </article>
+            <article class="card">
+              <p class="card-index">Nota 04</p>
+              <h3>Aviso que não interrompe</h3>
+              <p>A notificação aparece com texto e ícone, sem roubar o foco e sem prazo que a esconda sozinha.</p>
+              <button type="button" class="btn btn-secondary" data-open-note="toast">Ler nota no caderno</button>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" aria-labelledby="cores-title">
+          <div class="section-heading">
+            <h2 id="cores-title">Cores de texto e de notificação</h2>
+            <p>A cor acompanha um rótulo e um ícone. O estado nunca depende só da cor.</p>
+          </div>
+          <ul class="status-list">
+            <li class="status status-info">
+              <svg class="icon" aria-hidden="true"><use href="#i-info"></use></svg>
+              <p><strong>Informação.</strong> Um recado útil, sem bloquear a mesa.</p>
+            </li>
+            <li class="status status-success">
+              <svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>
+              <p><strong>Sucesso.</strong> A ação local terminou. Nada foi enviado.</p>
+            </li>
+            <li class="status status-warning">
+              <svg class="icon" aria-hidden="true"><use href="#i-alert"></use></svg>
+              <p><strong>Atenção.</strong> Há um limite: publicar continua desativado.</p>
+            </li>
+            <li class="status status-error">
+              <svg class="icon" aria-hidden="true"><use href="#i-error"></use></svg>
+              <p><strong>Erro.</strong> Falta um dado no formulário. O diálogo permanece aberto.</p>
+            </li>
+          </ul>
+        </section>
+
+        <section class="panel" aria-labelledby="demo-stack-title">
+          <div class="section-heading">
+            <h2 id="demo-stack-title">Contexto de empilhamento</h2>
+            <p>
+              O retângulo do pai cria um contexto com z-index 0. O filho, com z-index 50,
+              continua dentro desse contexto. O irmão, com z-index 1, é pintado por cima do filho.
+            </p>
+          </div>
+          <div class="stack-stage">
+            <div class="stack-parent">
+              <p>Pai · z-index 0</p>
+              <p class="stack-child">Filho · z-index 50</p>
+            </div>
+            <p class="stack-sibling">Irmão · z-index 1, por cima do filho</p>
+          </div>
+        </section>
+
+        <section class="panel" aria-labelledby="ordem-title">
+          <div class="section-heading">
+            <h2 id="ordem-title">Ordem das camadas desta página</h2>
+            <p>De baixo para cima. Os números são os mesmos usados no CSS.</p>
+          </div>
+          <ol class="layer-legend" id="layer-legend">
+            <li>Fundo e conteúdo em fluxo normal, com z-index automático.</li>
+            <li>Cabeçalho fixo no topo da área rolável — z-index <span data-z="header">20</span>.</li>
+            <li>Notificações fixas na viewport — z-index <span data-z="toast">30</span>.</li>
+            <li>Faixa de prova, quando visível — z-index <span data-z="proof">9999</span>. Continua fora da top layer.</li>
+            <li>Top layer do navegador: diálogo, gaveta e glossário, cada um com o próprio <code>::backdrop</code>.</li>
+          </ol>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>
+          Demonstração original para estudo de camadas e sobreposições.
+          Recarregar a página apaga as notas criadas aqui. Nenhum dado é enviado.
+        </p>
+      </footer>
+    </div>
+
+    <dialog class="overlay modal" id="session-dialog" aria-labelledby="session-title" aria-describedby="session-desc">
+      <form id="session-form" method="dialog" novalidate autocomplete="off">
+        <header class="overlay-header">
+          <div>
+            <p class="kicker">Diálogo modal</p>
+            <h2 id="session-title">Nova sessão de estudo</h2>
+          </div>
+          <button type="button" class="btn btn-secondary" id="session-close" data-close-dialog="session-dialog">
+            Fechar
+          </button>
+        </header>
+        <div class="overlay-body" id="session-body" tabindex="0" aria-label="Conteúdo da sessão de estudo">
+          <p id="session-desc">
+            A sessão fica só na memória desta aba. Não há servidor, conta ou gravação no navegador.
+          </p>
+          <div id="session-errors" role="alert" hidden></div>
+          <div class="field">
+            <label for="session-theme">Tema</label>
+            <select id="session-theme" name="theme" data-initial-focus>
+              <option value="">Selecione um tema</option>
+              <option value="Empilhamento">Empilhamento</option>
+              <option value="Top layer">Top layer</option>
+              <option value="Notificações">Notificações</option>
+              <option value="Layout responsivo">Layout responsivo</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="session-duration">Duração em minutos</label>
+            <input id="session-duration" name="duration" type="number" inputmode="numeric" min="5" max="180" value="25">
+          </div>
+          <div class="field">
+            <label for="session-note">Anotação de estudo</label>
+            <textarea id="session-note" name="note" rows="4" placeholder="Não escreva dados pessoais."></textarea>
+          </div>
+          <label class="check">
+            <input id="session-ack" name="ack" type="checkbox" value="sim">
+            <span>Entendi: a anotação não será enviada nem gravada.</span>
+          </label>
+          <h3>Roteiro para revisar com o diálogo aberto</h3>
+          <ol class="checklist">
+            <li>O foco entrou no diálogo, não ficou no botão da mesa.</li>
+            <li>Tab e Shift+Tab circulam só pelos controles daqui.</li>
+            <li>O botão de publicar, lá fora, não aceita clique.</li>
+            <li>Esc devolve o foco ao botão que abriu a sessão.</li>
+            <li>Clicar no pano de fundo também fecha.</li>
+            <li>A faixa de z-index 9999, se estiver visível, continua atrás deste diálogo.</li>
+            <li>Em uma janela baixa, esta lista rola dentro do diálogo.</li>
+            <li>O cabeçalho da página não rola junto com este conteúdo.</li>
+            <li>Fechar não grava a anotação em localStorage.</li>
+            <li>Salvar mostra uma notificação de sucesso sem mover o foco para ela.</li>
+          </ol>
+        </div>
+        <footer class="overlay-footer">
+          <button type="button" class="btn btn-secondary" id="session-cancel" data-close-dialog="session-dialog">
+            Cancelar
+          </button>
+          <button type="submit" class="btn btn-primary" id="session-save" value="salvar">
+            Anotar nesta aba
+          </button>
+        </footer>
+      </form>
+    </dialog>
+
+    <dialog class="overlay drawer" id="notes-drawer" aria-labelledby="drawer-title">
+      <header class="overlay-header">
+        <div>
+          <p class="kicker">Gaveta lateral modal</p>
+          <h2 id="drawer-title">Caderno de anotações</h2>
+          <p id="note-count">4 notas nesta aba</p>
+        </div>
+        <button type="button" class="btn btn-secondary" id="drawer-close" data-initial-focus data-close-dialog="notes-drawer">
+          Fechar
+        </button>
+      </header>
+      <div class="overlay-body" id="drawer-body" tabindex="0" aria-label="Notas de estudo">
+        <ul id="note-list"></ul>
+      </div>
+      <footer class="overlay-footer">
+        <button type="button" class="btn btn-secondary" id="add-note">Adicionar nota de exemplo</button>
+      </footer>
+    </dialog>
+
+    <div id="glossary" popover="auto" role="region" aria-labelledby="glossary-title">
+      <div class="glossary-card">
+        <div class="overlay-header">
+          <h2 id="glossary-title">Glossário rápido</h2>
+          <button type="button" class="btn btn-secondary" id="glossary-close" popovertarget="glossary" popovertargetaction="hide">
+            Fechar glossário
+          </button>
+        </div>
+        <dl>
+          <dt>Contexto de empilhamento</dt>
+          <dd>Grupo de elementos pintados juntos. O z-index não compara um elemento de dentro com outro de fora.</dd>
+          <dt>Top layer</dt>
+          <dd>Camada do navegador, acima do documento. Recebe o diálogo modal e o popover aberto.</dd>
+          <dt>::backdrop</dt>
+          <dd>Caixa do tamanho da viewport, desenhada imediatamente atrás do elemento que está na top layer.</dd>
+          <dt>Inerte</dt>
+          <dd>O resto do documento não recebe foco nem clique enquanto um diálogo modal está aberto.</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="toast-dock" id="toast-dock" role="region" aria-labelledby="toast-heading">
+      <h2 class="visually-hidden" id="toast-heading">Notificações</h2>
+      <div id="toasts" aria-labelledby="toast-heading"></div>
+    </div>
+
+    <p class="proof-badge" id="proof-badge" hidden role="status">z-index 9999 — abaixo da top layer</p>
+
+    <svg class="sprite" aria-hidden="true">
+      <symbol id="i-info" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9"></circle>
+        <path d="M12 11v6"></path>
+        <path d="M12 7.5h.01"></path>
+      </symbol>
+      <symbol id="i-check" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9"></circle>
+        <path d="M8 12.5l2.5 2.5L16 9.5"></path>
+      </symbol>
+      <symbol id="i-alert" viewBox="0 0 24 24">
+        <path d="M12 4l8.5 15h-17z"></path>
+        <path d="M12 10v4.5"></path>
+        <path d="M12 17h.01"></path>
+      </symbol>
+      <symbol id="i-error" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9"></circle>
+        <path d="M12 8v5"></path>
+        <path d="M12 16.5h.01"></path>
+      </symbol>
+    </svg>
+
+    <noscript>
+      <p class="noscript">Esta demonstração precisa de JavaScript local para abrir as sobreposições. Nenhum recurso externo é carregado.</p>
+    </noscript>
+    <script src="js/app.js"></script>
+  </body>
+</html>
